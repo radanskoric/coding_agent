@@ -17,8 +17,10 @@ class Agent
       user_input = gets.chomp
       break if user_input == "exit"
 
-      response = @chat.ask user_input
-      puts response.content
+      response = @chat.ask user_input do |chunk|
+        print chunk.content
+      end
+      puts ""
     end
   end
 end
